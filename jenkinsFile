@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+    environment{
+        MI_VAR = "ESTA ES MI VARIABLE"
+    }
+    stages{
+        stage('saludo1'){
+            steps{
+                echo "desde saludo 1"
+                echo "${env.MI_VAR}"
+            }
+        }
+        stage('saludo2'){
+            steps{
+                echo "desde saludo 2 - 1"
+                echo "desde saludo 2 - 2"
+            }
+        }
+        stage('prueba comandos'){
+            steps{
+                sh "echo 'prueba comandos'"
+                sh '''echo $MY_NAME'''
+            }
+        }
+    }
+}
